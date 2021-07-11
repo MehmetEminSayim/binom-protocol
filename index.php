@@ -1246,23 +1246,25 @@ include('./core/config.php');
                                                        <div class="field-item field-item-s2">
                                                             <input name="contact-phone" type="text" class="input-bordered input-bordered-lg  input-bordered-light required " placeholder="Your phone">
                                                        </div>
-                                        <?php
-                                        
-                                        $getCountries = $pdo ->prepare("select countryID, countryName from country");
-                                        $getCountries ->execute();
-                                        $getCountry = $getCountries->fetchAll();
+                                                       <div class="field-item field-item-s2">
+                                                            <input name="contact-twitter" type="text" class="input-bordered input-bordered-lg  input-bordered-light required " placeholder="Your twitter Username">
+                                                       </div>
+                                                       <?php
 
-                                        
-                                        ?>
+                                                       $getCountries = $pdo->prepare("select countryID, countryName from country");
+                                                       $getCountries->execute();
+                                                       $getCountry = $getCountries->fetchAll();
+
+
+                                                       ?>
 
                                                        <div class="field-item field-item-s2">
-                                                            <label class="field-label">Select Element</label>
                                                             <div class="field-wrap">
-                                                                 <select name="option2" class="select" data-select2-theme="bordered" required>
+                                                                 <select name="country" class="select" data-select2-theme="bordered" onmousedown="if(this.options.length>5){this.size=5;}" onchange="this.blur()" onblur="this.size=0;"  required>
                                                                       <?php
-                                                                      foreach($getCountry as $country){
+                                                                      foreach ($getCountry as $country) {
                                                                       ?>
-                                                                      <option value="<?=$country["countryID"]?>"><?=$country["countryName"]?></option>
+                                                                           <option  value="<?= $country["countryID"] ?>"><?= $country["countryName"] ?></option>
                                                                       <?php
                                                                       }
                                                                       ?>
@@ -1270,15 +1272,31 @@ include('./core/config.php');
                                                                  </select>
                                                             </div>
                                                        </div>
-                                        <?php
-
-                                        
-
-                                        ?>
+                                                       <?php
 
 
-                                                       <div class="field-item field-item-s2">
-                                                            <input name="contact-money" type="text" class="input-bordered input-bordered-lg  input-bordered-light required " placeholder="Your Money">
+
+                                                       ?>
+                                                       <div class="mb-4">Ne kadar yatırım yapmayı düşünüyorsunuz?</div>
+                                                       <div class="d-flex flex-wrap gutter-30px">
+                                                            <div class="mb-3">
+                                                                 <div class="field-wrap">
+                                                                      <input class="input-radio" id="rdi-1" name="Money" type="radio" value = "1" required>
+                                                                      <label for="rdi-1">0 - 5000 ₺</label>
+                                                                 </div>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                 <div class="field-wrap">
+                                                                      <input class="input-radio" id="rdi-2" name="Money" type="radio" value = "2" required>
+                                                                      <label for="rdi-2">5000 - 50000 ₺</label>
+                                                                 </div>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                 <div class="field-wrap">
+                                                                      <input class="input-radio" id="rdi-3" name="Money" type="radio" value = "3" required>
+                                                                      <label for="rdi-3">50000+ ₺</label>
+                                                                 </div>
+                                                            </div>
                                                        </div>
                                                        <div class="field-item field-item-s2">
                                                             <textarea name="contact-adress" class="input-bordered input-bordered-lg input-bordered-light input-textarea required" placeholder="Your Adress"></textarea>
